@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: mysql-wrapper
+Version: 0.2
+Summary: A generic MySQL wrapper for database operations.
+Home-page: https://git.autodesk.com/fsot-ai-hub/mysql-wrapper-package.git
+Author: Ahmed Sharief
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# MySQLWrapper
+
+A Python package that provides a generic wrapper for MySQL database operations, including connect, insert, update, delete, retrieve, and executing raw SQL queries.
+
+## Features
+
+- **Connect** to a MySQL database.
+- **Insert** single or multiple records.
+- **Update** records based on custom conditions.
+- **Delete** records based on custom conditions.
+- **Retrieve** records with optional filtering and selection of columns.
+- **Execute raw SQL queries** for custom operations.
+
+## Installation
+
+To install the package from a Git repository, use the following command:
+
+```bash
+pip install git+https://git.autodesk.com/fsot-ai-hub/mysql-wrapper-package.git
+```
+
+## Usage
+
+Here is an example of how to use the package:
+
+```python
+from mysql_wrapper import MySQLWrapper
+
+# Initialize the MySQLWrapper instance
+db = MySQLWrapper(host="localhost", user="root", password="password", database="test_db")
+
+# Connect to the MySQL database
+db.connect()
+
+# Check if the connection is established
+if db.is_connected():
+    print("Connected to the database.")
+else:
+    print("Failed to connect to the database.")
+
+# Insert a single record
+data = {"name": "John Doe", "email": "john.doe@example.com"}
+db.insert_one("users", data)
+
+# Insert multiple records
+data_list = [
+    {"name": "Jane Doe", "email": "jane.doe@example.com"},
+    {"name": "Alice Smith", "email": "alice.smith@example.com"}
+]
+db.insert_many("users", data_list)
+
+# Update records
+data = {"email": "john.new@example.com"}
+db.update("users", data, where_clause="name='John Doe'")
+
+# Delete records
+db.delete("users", where_clause="name='John Doe'")
+
+# Retrieve records
+results = db.get("users", columns=["name", "email"], where_clause="email LIKE '%@example.com'")
+for row in results:
+    print(row)
+
+# Execute raw SQL queries
+query = "SELECT * FROM users WHERE email = %s"
+params = ("john.doe@example.com",)
+result = db.execute_query(query, params)
+print(result)
+
+# Close the connection
+db.close()
+```
+
+## License
+
+### Key Points
+
+- **Installation Instructions**: Shows how to install the package from a Git repository.
+- **Usage Examples**: Provides clear examples for connecting, inserting, updating, deleting, retrieving data, running raw queries, and closing the connection.
+- **API Reference**: Includes a description of each method with parameters and usage examples.
+- **License**: Includes a license section.
