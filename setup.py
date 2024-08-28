@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mysql_wrapper',
-    version='0.2',
+    version='0.3',
     packages=find_packages(),
     install_requires=[
         'mysql-connector-python'
@@ -16,5 +16,5 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
-    url='https://git.autodesk.com/fsot-ai-hub/mysql-wrapper-package.git',
+    url='https://github.com/ahmed-sharief5/mysql-wrapper-package.git',
 )
