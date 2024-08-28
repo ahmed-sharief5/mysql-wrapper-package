@@ -1,8 +1,8 @@
 Metadata-Version: 2.1
 Name: mysql-wrapper
-Version: 0.2
+Version: 0.3
 Summary: A generic MySQL wrapper for database operations.
-Home-page: https://git.autodesk.com/fsot-ai-hub/mysql-wrapper-package.git
+Home-page: https://github.com/ahmed-sharief5/mysql-wrapper-package.git
 Author: Ahmed Sharief
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
