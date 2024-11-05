@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mysql_wrapper
-Version: 0.3
+Version: 0.4
 Summary: A generic MySQL wrapper for database operations.
 Home-page: https://github.com/ahmed-sharief5/mysql-wrapper-package.git
 Author: Ahmed Sharief
