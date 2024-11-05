@@ -113,6 +113,7 @@ class MySQLWrapper:
             cursor = self._execute_query(query, tuple(data.values()))
             self.connection.commit()
             logger.info(f"Inserted {cursor.rowcount} row(s) into {table}")
+            return cursor.lastrowid
         except Error as e:
             logger.error(f"Error while inserting data: {e}")
             raise e
@@ -137,6 +138,7 @@ class MySQLWrapper:
             cursor = self._execute_query(query, values)
             self.connection.commit()
             logger.info(f"Inserted {cursor.rowcount} rows into {table}")
+            return cursor.lastrowid
         except Error as e:
             logger.error(f"Error while inserting bulk data: {e}")
             raise e
@@ -155,6 +157,7 @@ class MySQLWrapper:
             cursor = self._execute_query(query, tuple(data.values()))
             self.connection.commit()
             logger.info(f"Updated {cursor.rowcount} row(s) in {table}")
+            return cursor.rowcount
         except Error as e:
             logger.error(f"Error while updating data: {e}")
             raise e
@@ -171,6 +174,7 @@ class MySQLWrapper:
             cursor = self._execute_query(query)
             self.connection.commit()
             logger.info(f"Deleted {cursor.rowcount} row(s) from {table}")
+            return cursor.rowcount
         except Error as e:
             logger.error(f"Error while deleting data: {e}")
             raise e
@@ -211,6 +215,7 @@ class MySQLWrapper:
                 return cursor.fetchall()
             else:
                 self.connection.commit()
+                return cursor.rowcount
                 logger.info(f"Query executed successfully: {cursor.rowcount} row(s) affected")
         except Error as e:
             logger.error(f"Error while executing query: {e}")
